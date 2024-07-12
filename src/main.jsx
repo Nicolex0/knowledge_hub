@@ -141,4 +141,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       </MantineProvider>
     </Provider>
   </React.StrictMode>,
+<<<<<<< HEAD
 )
+=======
+)
+>>>>>>> 45aaec14e8adcc2d3e1253a24346fad011f0fa9d

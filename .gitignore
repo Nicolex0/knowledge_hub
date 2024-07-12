@@ -17,8 +17,16 @@ dist-ssr
 !.vscode/extensions.json
 .idea
 .DS_Store
+<<<<<<< HEAD
+=======
+12MegaBlog/.ev
+>>>>>>> 45aaec14e8adcc2d3e1253a24346fad011f0fa9d
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+<<<<<<< HEAD
+=======
+.env
+>>>>>>> 45aaec14e8adcc2d3e1253a24346fad011f0fa9d
