@@ -1,35 +1,57 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import React, { useState, useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 import './App.css'
+import authService from "./appwrite/auth"
+import {login, logout} from "./store/authSlice"
+import { Footer, Header } from './components'
+import { Outlet, useLocation } from 'react-router-dom'
+import Spinner from './pages/Spin/Spinner'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [loading, setLoading] = useState(true)
+  const dispatch = useDispatch()
+  const location = useLocation();
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+  useEffect(() => {
+    if (location.pathname !== '/login') {
+      setLoading(true);
+    authService.getCurrentUser()
+    .then((userData) => {
+      if (userData) {
+        dispatch(login({userData}))
+      } else {
+        dispatch(logout())
+      }
+    })
+    .finally(() => 
+      // setTimeout(() => {
+      setLoading(false)
+    // }, 3000) 
+    )
+   }
+  }, [])
+  
+
+  useEffect(() => {
+    setLoading(true)
+    setTimeout(() => {
+        setLoading(false)
+    }, 3000)
+}, [])
+
+
+  return !loading ? (
+    <div className='pt-0 min-h-screen flex flex-wrap content-between bg-white px-5 lg:px-20'>
+      <div className='w-full block'>
+        <Header />
+        <main>
+         <Outlet />
+        </main>
+        {location.pathname === '/' && <Footer/>}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  ) : <Spinner />
+  
 }
 
 export default App
