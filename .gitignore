@@ -17,10 +17,8 @@ dist-ssr
 !.vscode/extensions.json
 .idea
 .DS_Store
-12MegaBlog/.ev
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
-.env
