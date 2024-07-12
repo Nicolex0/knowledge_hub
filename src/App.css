@@ -1,13 +1,27 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  /* max-width: 97%; */
+  /* margin: 0 ; */
+  /* padding: 6px; */
   text-align: center;
 }
 
-.logo {
+/* @media (min-width: 1024px) {
+  #root {
+     padding-left: 50px;
+     padding-right: 50px;
+  }
+} */
+
+/* @media (min-width: 640px) {
+  .small-latestpost {
+     width: 20%;
+  }
+}  */
+
+
+/* .logo {
   height: 6em;
-  padding: 1.5em;
+  padding: 1em;
   will-change: filter;
   transition: filter 300ms;
 }
@@ -39,4 +53,4 @@
 
 .read-the-docs {
   color: #888;
-}
+} */
